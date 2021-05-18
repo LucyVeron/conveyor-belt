@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Item } from '../interfaces/item';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() order: Item[];
 }

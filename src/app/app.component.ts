@@ -1,24 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from './interfaces/item';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  
-  /* 
-    List-Detail View: Select a menu item from the LIST view and watch it appear in the DETAIL view.
-    Use the OnPush change detection strategy
-  */
- 
-  public items = [
-    {name: 'sushi', emoji: '🍣'},
-    {name: 'soup', emoji: '🍜'},
-    {name: 'burger', emoji: '🍔'},
-    {name: 'pizza', emoji: '🍕'},
-    {name: 'ice cream', emoji: '🍨'},
-    {name: 'shrimp', emoji: '🍤'},
-    {name: 'chicken', emoji: '🍗'}
-  ]
+export class AppComponent implements OnInit {
+
+  public order: Item[] = [];
+  public items: Observable<Item[]>;
+  public selected: Item;
+
+  constructor(private api: ApiService) { }
+
+  ngOnInit() {
+    this.items = this.api.getMenu();
+  }
+
+  public orderItem(item: Item): void {
+    this.order = [...this.order, item];
+  }
 }
