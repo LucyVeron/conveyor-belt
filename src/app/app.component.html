@@ -1,6 +1,7 @@
 <div class="container">
   <div>
-    <div *ngFor="let item of items | async" class="item" (click)="orderItem(item)">
+    <div *ngFor="let item of items" class="item"
+         (click)="orderItem(item)">
       {{item.emoji}} {{item.name}}
     </div>
   </div>

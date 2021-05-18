@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Item } from '../interfaces/item';
-
+import { 
+  ChangeDetectionStrategy,
+  Component,
+  Input
+} from '@angular/core';
+import { Item } from '../item';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
